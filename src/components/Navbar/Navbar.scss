@@ -1,0 +1,15 @@
+.navbar {
+    &__link {
+        color: white;
+        text-decoration: none;
+        margin-right: 20px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &--active {
+            text-decoration: underline;
+        }
+    }
+}

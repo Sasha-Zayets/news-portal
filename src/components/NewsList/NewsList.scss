@@ -1,0 +1,15 @@
+.news-list {
+    padding: 20px 0 40px 0;
+
+    &__row {
+        margin: 0 -15px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__col {
+        padding: 0 15px;
+        width: calc((100% / 3) - 30px);
+        margin-bottom: 20px;
+    }
+}

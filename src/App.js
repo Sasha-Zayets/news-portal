@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Fragment } from 'react';
 import './App.css';
+import { connect } from 'react-redux';
+import Header from './components/Header/Header';
+import Content from './components/Content/Content';
+import Footer from './components/Footer/Footer';
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Header />
+      <Content />
+      <Footer />
+    </Fragment>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    counter: state.counter
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+      increment: () => dispatch({ type: 'add' }),
+      dicrement: () => dispatch({ type: 'odd' }),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

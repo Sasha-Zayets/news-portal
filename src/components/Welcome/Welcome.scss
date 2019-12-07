@@ -1,0 +1,29 @@
+.welcome-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0 40px 0;
+
+    &__image {
+        max-width: 500px;
+        object-fit: contain;
+    }
+
+    &__link {
+        height: 40px;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        border-radius: 4px;
+        background-color: #0089ff;
+        color: white;
+        text-decoration: none;
+        transition-duration: 0.3s;
+
+        &:hover {
+            background-color: #027ae2;
+        }
+    }
+}
