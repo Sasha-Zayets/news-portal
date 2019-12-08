@@ -2,7 +2,8 @@ import React from 'react';
 import './NewsItem.scss';
 
 const NewsItem = (props) => {
-    const { title, urlToImage, description, publishedAt } = props.news;
+    const { title, urlToImage, description, publishedAt, url } = props.news;
+
     return (
         <div className="news-item">
             <picture className="news-item__frame">
@@ -16,9 +17,12 @@ const NewsItem = (props) => {
                 <p className="news-item__description">
                     { description }
                 </p>
-                <span className="news-item__date">
-                    { publishedAt }
-                </span>
+                <div className="news-item__bottom">
+                    <span className="news-item__date">
+                        { publishedAt }
+                    </span>
+                    <a href={ url } target="__blank" className="news-item__link">To read the original</a>
+                </div>
             </div>
         </div>
     )

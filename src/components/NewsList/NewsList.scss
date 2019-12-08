@@ -1,15 +1,41 @@
 .news-list {
     padding: 20px 0 40px 0;
 
+    &__search {
+        height: 35px;
+        display: flex;
+        margin-bottom: 10px;
+
+        input {
+            height: 100%;
+            border-radius: 3px;
+            border: 1px solid silver;
+            padding: 0 10px
+        }
+    }
+
     &__row {
-        margin: 0 -15px;
         display: flex;
         flex-wrap: wrap;
     }
 
     &__col {
-        padding: 0 15px;
-        width: calc((100% / 3) - 30px);
         margin-bottom: 20px;
+    }
+
+    &__result {
+        margin-bottom: 20px;
+    }
+
+    &__button {
+        height: 35px;
+        padding: 0 15px;
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+        color: white;
+        border-radius: 3px;
+        border: none;
+        background-color: blue;
     }
 }
