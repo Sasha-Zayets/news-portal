@@ -5,9 +5,11 @@
     align-items: center;
     padding: 20px 0 40px 0;
 
-    &__image {
-        max-width: 500px;
-        object-fit: contain;
+    &__title {
+        font-size: 72px;
+        letter-spacing: 2px;
+        font-weight: 700;
+        color: #b31d1d;
     }
 
     &__link {

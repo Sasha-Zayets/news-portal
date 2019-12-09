@@ -8,6 +8,7 @@ const RootRouter = () => {
     return (
         <Switch>
             <Route path='/' exact component={Welcome}></Route>
+            <Route path='/news-portal/' exact component={Welcome}></Route>
             <Route path='/news' exact component={NewsList}></Route>
         </Switch>
     )

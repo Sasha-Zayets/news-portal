@@ -4,10 +4,7 @@ import './Welcome.scss';
 
 const Welcome = () => (
     <div className="welcome-block">
-        <img 
-            src="/static/images/welcome-featured-image.jpg" 
-            className="welcome-block__image" 
-            alt=""/>
+        <h1 className="welcome-block__title">Welcome</h1>
         <Link to='/news' className="welcome-block__link">Read News</Link>
     </div>
 )
