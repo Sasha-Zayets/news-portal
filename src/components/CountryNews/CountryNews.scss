@@ -1,0 +1,22 @@
+.country-news {
+    padding: 30px 0;
+
+    &__title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+
+    &__filter {
+        display: flex;
+        margin-bottom: 20px;
+        
+        .chips {
+            margin-right: 15px;
+        }
+    }
+
+    &__item {
+        margin-bottom: 10px;
+    }
+}

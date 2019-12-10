@@ -1,7 +1,7 @@
 import React from 'react';
 import './NewsList.scss';
 import { connect } from 'react-redux';
-import { addList } from '../../store/actions';
+import { setList } from '../../store/actions';
 
 import NewsItem from '../NewsItem/NewsItem';
 
@@ -16,22 +16,7 @@ class NewsList extends React.Component {
     }
 
     componentDidMount () {
-        this.getArticles('https://newsapi.org/v2/top-headlines?country=us');   
-    }
-
-    getArticles (url) {
-        fetch(`${url}&apiKey=d38891e5f6fc4ec2885615900859eb4a`)
-            .then(data => {
-                return data.json()
-            })
-            .then(result => {
-                this.props.setList(result.articles)
-            })
-            .catch(error => console.log(error))
-    }
-
-    changeNews = () => {
-        this.getArticles('https://newsapi.org/v2/everything?q=bitcoin');
+        setList('https://newsapi.org/v2/top-headlines?country=us', this.props.dispatch);   
     }
 
     changeSearch = (event) => {
@@ -58,7 +43,7 @@ class NewsList extends React.Component {
         const { search } = this.state;
 
         if (search.length > 0) {
-            this.getArticles(`https://newsapi.org/v2/everything?q=${this.state.search}`);
+            setList(`https://newsapi.org/v2/everything?q=${this.state.search}`, this.props.dispatch);
             this.setState({
                 showResultSearch: true
             })
@@ -107,10 +92,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setList: list => dispatch(addList(list))
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewsList);
+export default connect(mapStateToProps)(NewsList);

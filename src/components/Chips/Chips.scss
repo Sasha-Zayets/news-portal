@@ -1,0 +1,27 @@
+.chips {
+    height: 25px;
+    border-radius: 15px;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-weight: 700;
+    color: #538AE4;
+    background-color: #dbe8fa;
+    cursor: pointer;
+    transition-duration: 0.3s;
+
+    &--active {
+        background-color: #315a94;
+        color: white;
+    }
+    
+    &:hover {
+        background-color: #cedbef;
+        color: #0859de;
+    }
+
+    &:active, &:focus {
+        outline: none;
+    }
+}

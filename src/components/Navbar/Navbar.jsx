@@ -6,12 +6,12 @@ const Navbar = () => {
     const state = {
         links: [
             {
-                title: 'news',
+                title: 'News US',
                 to: '/news',
             },
             {
-                title: 'other',
-                to: '/other',
+                title: 'Ukraine News',
+                to: '/ukraine-news',
             },
             {
                 title: 'article',
