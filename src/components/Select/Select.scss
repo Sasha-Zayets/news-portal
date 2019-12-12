@@ -1,0 +1,12 @@
+.select {
+    height: 30px;
+    padding: 0 10px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 4px;
+
+    &:focus {
+        outline: none;
+        border-color: blue;
+    }
+}

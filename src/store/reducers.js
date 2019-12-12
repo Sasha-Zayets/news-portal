@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux'
-import { ADD_LIST } from './actions';
+import { ADD_LIST, SET_LANG } from './actions';
 
-const listNews = []
+const listNews = [];
+
 function list (state = listNews, action ) {
   switch (action.type) {
     case ADD_LIST:
@@ -12,8 +13,19 @@ function list (state = listNews, action ) {
   }
 }
 
+function country (state = 'ua', action) {
+  switch (action.type) {
+    case SET_LANG:
+      state = action.value;
+      return state
+    default:
+      return state
+  }
+}
+
 const todoApp = combineReducers({
-  list
+  list,
+  country
 })
 
 export default todoApp

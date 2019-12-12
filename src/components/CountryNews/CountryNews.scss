@@ -9,7 +9,7 @@
 
     &__filter {
         display: flex;
-        margin-bottom: 20px;
+        flex-grow: 2;
         
         .chips {
             margin-right: 15px;
@@ -18,5 +18,11 @@
 
     &__item {
         margin-bottom: 10px;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
     }
 }

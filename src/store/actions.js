@@ -1,10 +1,24 @@
-export const ADD_LIST = 'ADD_LIST';
+const ADD_LIST = 'ADD_LIST';
+const SET_LANG = 'SET_LANG';
+
+export { ADD_LIST, SET_LANG };
 
 export function addList (list) {
     return {
         type: ADD_LIST,
         payload: list
     }
+}
+
+export function setCountry (value) {
+    return {
+        type: SET_LANG,
+        value: value
+    }
+}
+
+export const setNewCountry = (value, dispatch) => {
+    dispatch(setCountry(value));
 }
 
 export const setList = (url, dispatch) => {

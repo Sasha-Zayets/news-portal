@@ -4,12 +4,15 @@ import './CountryNews.scss';
 
 import Chips from '../Chips/Chips';
 import NewsItem from '../NewsItem/NewsItem';
+import Select from '../Select/Select';
 
-import { setList } from '../../store/actions';
+import { setList, setNewCountry } from '../../store/actions';
 
 class CountryNews extends React.Component {
     constructor (props) {
         super();
+
+        this.dispatch = props.dispatch;
 
         this.state = {
             chipsList: [
@@ -37,12 +40,22 @@ class CountryNews extends React.Component {
                     title: 'technology',
                     active: false
                 }
+            ],
+            countryList: [
+                {
+                    name: 'Russia',
+                    value: 'ru'
+                },
+                {
+                    name: 'Serbia',
+                    value: 'rs'
+                }
             ]
         }
     }
-
+    
     componentDidMount () {
-        setList(`https://newsapi.org/v2/top-headlines?country=ua`, this.props.dispatch);
+        setList(`https://newsapi.org/v2/top-headlines?country=${this.props.country}`, this.dispatch);
     }
 
     setFilter (value, index) {
@@ -61,26 +74,39 @@ class CountryNews extends React.Component {
             chipsList: chips
         });
 
-        setList(`https://newsapi.org/v2/top-headlines?country=ua&category=${value}`, this.props.dispatch);
+        setList(`https://newsapi.org/v2/top-headlines?country=ua&category=${value}`, this.dispatch);
+    }
+
+    selectCountry (value) {
+        setNewCountry(value, this.dispatch);
+        
+        setTimeout(() => {
+            setList(`https://newsapi.org/v2/top-headlines?country=${this.props.country}`, this.dispatch);
+        }, 100);
     }
 
     render () {
         const { listNews } = this.props;
-        const { chipsList } = this.state;
+        const { chipsList, countryList } = this.state;
 
         return (
             <div className="country-news">
                 <h2 className="country-news__title">Country news</h2>
-                <div className="country-news__filter">
-                    {   chipsList.map((chip, index) => {
-                            return (
-                                <Chips 
-                                    key={index}
-                                    activeClass={chip.active}
-                                    Click={() => this.setFilter(chip.title, index)}> {chip.title} </Chips>
-                            )
-                        })
-                    }
+                <div className="country-news__header">
+                    <div className="country-news__filter">
+                        {   chipsList.map((chip, index) => {
+                                return (
+                                    <Chips 
+                                        key={index}
+                                        activeClass={chip.active}
+                                        Click={() => this.setFilter(chip.title, index)}> {chip.title} </Chips>
+                                )
+                            })
+                        }
+                    </div>
+                    <div className="country-news__select">
+                        <Select onChange={this.selectCountry.bind(this)} options={countryList} />
+                    </div>
                 </div>
                 <div>
                     {   listNews.map((element, index) => {
@@ -99,7 +125,8 @@ class CountryNews extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        listNews: state.list
+        listNews: state.list,
+        country: state.country
     }
 }
 
